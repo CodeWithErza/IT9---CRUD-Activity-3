@@ -28,6 +28,6 @@ class DashboardLayout extends Component
      */
     public function render(): View
     {
-        return view('layouts.dashboard');
+        return view('components.layouts.dashboard');
     }
 } 

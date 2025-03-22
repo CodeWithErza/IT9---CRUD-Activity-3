@@ -8,16 +8,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
     <style>
-      /* Override the animated background with the specific gradient */
       .main-container {
-        background: linear-gradient(117deg, #26547C 32.6%, #F40000 100.62%) !important;
+        background: #111111 !important;
         position: relative;
         width: 100%;
         height: 100vh;
@@ -32,36 +31,159 @@
         margin: 0 auto;
       }
       
-      /* Removed the static background gradient to use the animated one from index.css */
       .glass-card {
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(26, 26, 26, 0.6);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        animation: pulse 4s infinite ease-in-out;
+        box-shadow: 0 8px 32px rgba(255, 228, 92, 0.2), 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 2px 20px rgba(255, 228, 92, 0.05);
+        border: 1px solid rgba(255, 228, 92, 0.2);
+        padding: 2.5rem;
       }
+
+      .welcome-title {
+        color: #FFE45C;
+        font-family: Oswald, sans-serif;
+        font-size: 2.5rem;
+        font-weight: 500;
+        line-height: 1.2;
+        text-shadow: 0 0 25px rgba(255, 228, 92, 0.5), 0 0 10px rgba(0, 0, 0, 0.8);
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .welcome-subtitle {
+        color: rgba(255, 255, 255, 0.95);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+      }
+
+      .form-input-group {
+        position: relative;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-input-icon {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #FFE45C;
+        font-size: 1.2rem;
+        z-index: 2;
+      }
+
       .custom-input {
         height: 50px;
-        background-color: #6cbeed !important;
-        border: 1px solid #ffffff !important;
-        border-radius: 10px !important;
-        color: #ffffff !important;
+        background-color: rgba(17, 17, 17, 0.7) !important;
+        border: 1px solid rgba(255, 228, 92, 0.3) !important;
+        color: #FFFFFF !important;
+        border-radius: 8px !important;
+        padding: 12px 12px 12px 48px !important;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
       }
+
+      .custom-input:focus {
+        box-shadow: 0 0 0 4px rgba(255, 228, 92, 0.15) !important;
+        border: 1px solid #FFE45C !important;
+        outline: none;
+      }
+
       .custom-input::placeholder {
-        color: #ffffff;
-        opacity: 0.75;
+        color: rgba(255, 255, 255, 0.5) !important;
       }
+
       .custom-btn {
-        background-color: #ff9d25;
-        border: 1px solid #ffffff;
-        color: #000000;
+        width: 100%;
+        height: 50px;
+        background-color: #FFE45C;
+        border: none;
+        color: #111111;
+        font-weight: 600;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
       }
+
+      .custom-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(255, 228, 92, 0.3);
+        background-color: #FFF200;
+      }
+
       .social-btn {
-        background-color: #ffffff;
-        border-radius: 10px;
-        height: 62px;
+        background-color: #111111;
+        border: 2px solid rgba(255, 228, 92, 0.2);
+        color: #FFFFFF;
+        border-radius: 8px;
+        height: 50px;
+        transition: all 0.3s ease;
+      }
+
+      .social-btn:hover {
+        background-color: #FFE45C;
+        color: #111111;
+      }
+
+      .form-check-input {
+        width: 20px;
+        height: 20px;
+        background-color: rgba(17, 17, 17, 0.9) !important;
+        border: 2px solid rgba(255, 228, 92, 0.5) !important;
+        border-radius: 4px !important;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      .form-check-input:checked {
+        background-color: #FFE45C !important;
+        border-color: #FFE45C !important;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23111111' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e") !important;
+        background-position: center;
+        background-size: 75%;
+        box-shadow: 0 0 10px rgba(255, 228, 92, 0.3);
+      }
+
+      .form-check-input:focus {
+        box-shadow: 0 0 0 3px rgba(255, 228, 92, 0.2) !important;
+        border-color: #FFE45C !important;
+      }
+
+      .form-check {
+        display: flex;
+        align-items: center;
+      }
+
+      .form-check-label {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.95rem;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .login-link {
+        color: #FFE45C !important;
+        text-decoration: none !important;
+        transition: all 0.3s ease;
+      }
+
+      .login-link:hover {
+        color: #FFF200 !important;
+      }
+
+      .terms-link {
+        color: #FFE45C !important;
+        text-decoration: none !important;
+        transition: all 0.3s ease;
+      }
+
+      .terms-link:hover {
+        color: #FFF200 !important;
       }
       
       @media (max-width: 576px) {
@@ -69,88 +191,127 @@
           max-width: 100%;
           padding: 0 15px;
         }
+        
+        .welcome-title {
+          font-size: 2rem;
+        }
+      }
+
+      /* Add floating particles for consistent design with welcome page */
+      .particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      
+      .particle {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: #FFE45C;
+        border-radius: 50%;
+        animation: float 20s linear infinite;
+        opacity: 0.5;
+        box-shadow: 0 0 10px 2px rgba(255, 228, 92, 0.3);
+      }
+      
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) scale(0);
+          opacity: 0;
+        }
+        50% {
+          opacity: 0.7;
+        }
+        100% {
+          transform: translateY(-100px) scale(1);
+          opacity: 0;
+        }
+      }
+
+      @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
+        .glass-card {
+          background: rgba(17, 17, 17, 0.4);
+        }
+        .custom-input {
+          background-color: rgba(17, 17, 17, 0.4) !important;
+        }
       }
     </style>
   </head>
   <body>
     <div class="main-container">
-      <!-- Radial overlay for consistent look with login page -->
+      <!-- Particles Background -->
+      <div class="particles">
+        @for ($i = 0; $i < 80; $i++)
+          <div class="particle" style="left: {{ rand(0, 100) }}%; animation-delay: -{{ rand(0, 20) }}s; width: {{ rand(2, 4) }}px; height: {{ rand(2, 4) }}px;"></div>
+        @endfor
+      </div>
+      
+      <!-- Radial overlay -->
       <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.1) 100%); z-index: 2; opacity: 0.7;"></div>
       
       <div class="container d-flex align-items-center justify-content-center" style="position: relative; z-index: 10; min-height: 100vh;">
         <div class="form-container">
-          <div class="glass-card p-md-5 p-4">
-            <!-- Form Column (centered) -->
-            <h1 class="text-white fw-normal mb-3 text-center" style="font-family: Oswald, sans-serif; font-size: 2.5rem; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);">Create an account</h1>
-            
-            <div class="mb-4 text-center">
-              <span class="text-white" style="font-family: 'Open Sans', sans-serif; font-size: 0.9rem;">Already have an account?</span>
-              <a href="{{ route('login') }}" class="ms-1" style="color: #0495b0; font-family: 'Open Sans', sans-serif; font-size: 0.9rem; text-decoration: underline;">Log in</a>
-            </div>
+          <div class="glass-card">
+            <h1 class="welcome-title">Create an account</h1>
+            <p class="welcome-subtitle">Join us and get access to exclusive features</p>
             
             <form method="POST" action="{{ route('register') }}">
               @csrf
               <!-- First and Last Name Row -->
               <div class="row mb-3">
                 <div class="col-md-6 mb-3 mb-md-0">
-                  <input type="text" class="form-control custom-input" name="name" placeholder="First Name" required>
+                  <div class="form-input-group">
+                    <i class="fas fa-user form-input-icon"></i>
+                    <input type="text" class="form-control custom-input" name="name" placeholder="First Name" required>
+                  </div>
                 </div>
                 <div class="col-md-6">
-                  <input type="text" class="form-control custom-input" name="last_name" placeholder="Last Name" required>
+                  <div class="form-input-group">
+                    <i class="fas fa-user form-input-icon"></i>
+                    <input type="text" class="form-control custom-input" name="last_name" placeholder="Last Name" required>
+                  </div>
                 </div>
               </div>
               
               <!-- Email Field -->
-              <div class="mb-3">
+              <div class="form-input-group">
+                <i class="fas fa-envelope form-input-icon"></i>
                 <input type="email" class="form-control custom-input" name="email" placeholder="Email" required>
               </div>
               
               <!-- Password Field -->
-              <div class="mb-3 position-relative">
+              <div class="form-input-group">
+                <i class="fas fa-lock form-input-icon"></i>
                 <input type="password" class="form-control custom-input" id="password" name="password" placeholder="Password" required>
-                <button type="button" class="btn position-absolute end-0 top-50 translate-middle-y bg-transparent border-0" onclick="togglePasswordVisibility()">
-                  <i class="fa-solid fa-eye text-white opacity-75"></i>
+                <button type="button" class="btn position-absolute end-0 top-50 translate-middle-y bg-transparent border-0 pe-3" onclick="togglePasswordVisibility()">
+                  <i class="fa-solid fa-eye" style="color: #FFE45C; font-size: 1.2rem;"></i>
                 </button>
               </div>
               
               <!-- Terms and Conditions -->
               <div class="mb-4">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="terms" name="terms" required style="width: 20px; height: 20px; background-color: transparent; border: 2px solid #ffffff;">
-                  <label class="form-check-label text-white" for="terms" style="font-family: 'Open Sans', sans-serif;">
-                    I agree to the <a href="#" style="color: #009fb7; text-decoration: underline;">Terms and Conditions</a>
+                  <input class="form-check-input" type="checkbox" id="terms" name="terms" required>
+                  <label class="form-check-label text-white" for="terms">
+                    I agree to the <a href="#" class="terms-link">Terms and Conditions</a>
                   </label>
                 </div>
               </div>
               
               <!-- Create Account Button -->
-              <button type="submit" class="btn custom-btn w-100 py-2 mb-4 fw-bold" style="font-family: Roboto, sans-serif; font-size: 1.2rem; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);">
+              <button type="submit" class="custom-btn">
                 Create Account
               </button>
-              
-              <!-- Or Register With -->
-              <div class="text-center mb-3">
-                <div class="d-flex align-items-center justify-content-center">
-                  <hr class="flex-grow-1 border-white opacity-25">
-                  <span class="px-3 text-white" style="font-family: Roboto, sans-serif;">Or register with</span>
-                  <hr class="flex-grow-1 border-white opacity-25">
-                </div>
-              </div>
-              
-              <!-- Social Login Buttons -->
-              <div class="row g-3">
-                <div class="col-md-6 mb-3 mb-md-0">
-                  <a href="#" class="btn social-btn d-flex align-items-center justify-content-center w-100">
-                    <img src="https://static.codia.ai/image/2025-03-18/77cf9b98-24af-47b7-ad59-2aab97bb0447.svg" alt="Google" height="24" class="me-2">
-                    <span style="color: #000000; font-family: Roboto, sans-serif; font-size: 1.25rem;">Google</span>
-                  </a>
-                </div>
-                <div class="col-md-6">
-                  <a href="#" class="btn social-btn d-flex align-items-center justify-content-center w-100">
-                    <img src="https://static.codia.ai/image/2025-03-18/b33a819e-c60e-4257-a018-0634083757bb.svg" alt="Apple" height="28" class="me-2">
-                    <span style="color: #000000; font-family: Roboto, sans-serif; font-size: 1.25rem;">Apple</span>
-                  </a>
-                </div>
+
+              <div class="mt-4 text-center">
+                <span class="text-white">Already have an account?</span>
+                <a href="{{ route('login') }}" class="ms-2 login-link">Log in</a>
               </div>
             </form>
           </div>
